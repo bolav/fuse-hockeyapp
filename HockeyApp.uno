@@ -13,15 +13,20 @@ using Fuse.Platform;
 public class HockeyApp : Behavior {
     public HockeyApp () {
         debug_log "Constructor";
-        Fuse.Platform.Lifecycle.Started += OnStarted;
-        if (Fuse.Platform.Lifecycle.State == Fuse.Platform.ApplicationState.Foreground) {
+        if ((Fuse.Platform.Lifecycle.State == Fuse.Platform.ApplicationState.Foreground)
+            || (Fuse.Platform.Lifecycle.State == Fuse.Platform.ApplicationState.Interactive)
+            ) {
             _foreground = true;
+        }
+        else {
+            Fuse.Platform.Lifecycle.EnteringForeground += OnEnteringForeground;
         }
     }
 
-    void OnStarted(Fuse.Platform.ApplicationState newState)
+    void OnEnteringForeground(Fuse.Platform.ApplicationState newState)
     {
         _foreground = true;
+        Fuse.Platform.Lifecycle.EnteringForeground -= OnEnteringForeground;
         Init();
     }
 
