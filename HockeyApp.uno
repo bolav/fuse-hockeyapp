@@ -13,6 +13,8 @@ using Fuse.Platform;
 public class HockeyApp : Behavior {
     public HockeyApp () {
         debug_log "Constructor";
+        if defined(DESIGNMODE)
+            return;
         if ((Fuse.Platform.Lifecycle.State == Fuse.Platform.ApplicationState.Foreground)
             || (Fuse.Platform.Lifecycle.State == Fuse.Platform.ApplicationState.Interactive)
             ) {
@@ -34,6 +36,8 @@ public class HockeyApp : Behavior {
     static bool _inited = false;
     void Init() {
         debug_log "Init";
+        if defined(DESIGNMODE)
+            return;
         if (_inited)
             return;
         if (Token == null) {
