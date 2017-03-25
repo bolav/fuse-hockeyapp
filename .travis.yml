@@ -1,9 +1,10 @@
 env:
   global:
     - NDK_VERSION=r10e
-    - FUSE_VERSION=0.25.5.7677
+    - FUSE_VERSION=0.35.0.10867
     - UNOPROJ=hockeyapp_example
-    - NAME=ContactsExample
+    - NAME=hockeyapp_example
+
 language: 
   - fuse
   - objective-c
