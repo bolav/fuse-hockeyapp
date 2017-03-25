@@ -1,0 +1,15 @@
+set timeout 600
+
+spawn fuse install android
+expect "just press Enter to continue"
+puts "We are going to send Enter"
+send -- "\r"
+
+expect "just press Enter to continue"
+puts "We are going to send Enter"
+send -- "\r"
+
+expect "Do you accept the license? (y/n):"
+send -- "y\r"
+
+expect "Done installing android"
