@@ -86,6 +86,9 @@ public class HockeyApp : Behavior {
         UpdateManager.register(com.fuse.Activity.getRootActivity());
     @}
 
+    extern(!mobile) void InitImpl(string token) {
+    }
+
     [Foreign(Language.Java)]
     extern(Android) void UnregisterManagers()
     @{
